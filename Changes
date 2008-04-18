@@ -1,0 +1,10 @@
+---
+global:
+  name: LWP-UserAgent-ProgressBar
+releases:
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - original version
+    date: 2007-11-24T20:53:01Z
+    tags: []
+    version: 0.01
