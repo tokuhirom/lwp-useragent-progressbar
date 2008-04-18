@@ -1,0 +1,18 @@
+---
+global:
+  name: LWP-UserAgent-ProgressBar
+releases:
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - set the version to 0.02
+      - fixed POD typo
+      - moved generated documentation of interited methods to after documentation of this class' methods so the manpage is more readable
+    date: 2008-01-31T16:01:33Z
+    tags: []
+    version: 0.02
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - original version
+    date: 2007-11-24T20:53:01Z
+    tags: []
+    version: 0.01

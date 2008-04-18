@@ -1,0 +1,9 @@
+steps = ApplyYAMLChangeLogVersion, Manifest, DistTest, Commit, Tag, MakeDist, MyUploadCPAN, DistClean, Twitter
+
+svk.tagpattern = //local/cpan/tags/LWP-UserAgent-ProgressBar-%v
+
+twitter.config = ~/.twitterrc
+twitter.distname = LWP-UserAgent-ProgressBar
+twitter.message = shipped %d %v - soon at %u
+
+
