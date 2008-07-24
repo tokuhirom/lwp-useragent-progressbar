@@ -1,19 +1,11 @@
----
-global:
-  name: LWP-UserAgent-ProgressBar
-releases:
-  - author: 'Marcel Gruenauer <marcel@cpan.org>'
-    changes:
-      - set the version to 0.02
-      - fixed POD typo
-      - moved generated documentation of interited methods to after documentation of this class' methods so the manpage is more readable
-      - '.shipit: fixed svk.tagpattern'
-    date: 2008-05-29T12:05:49Z
-    tags: []
-    version: 0.02
-  - author: 'Marcel Gruenauer <marcel@cpan.org>'
-    changes:
-      - original version
-    date: 2007-11-24T20:53:01Z
-    tags: []
-    version: 0.01
+Revision history for Perl extension LWP-UserAgent-ProgressBar
+
+0.02  Thu, 29 May 2008 12:05:49 -0000 (Marcel Gruenauer <marcel@cpan.org>)
+     - set the version to 0.02
+     - fixed POD typo
+     - moved generated documentation of interited methods to after
+       documentation of this class' methods so the manpage is more readable
+     - .shipit: fixed svk.tagpattern
+
+0.01  Sat, 24 Nov 2007 20:53:01 -0000 (Marcel Gruenauer <marcel@cpan.org>)
+     - original version

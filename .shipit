@@ -1,6 +1,6 @@
-steps = ApplyYAMLChangeLogVersion, Manifest, DistTest, Commit, Tag, MakeDist, MyUploadCPAN, DistClean, Twitter
+steps = FindVersion, ChangeVersion, CheckChangeLog, Manifest, DistTest, Commit, Tag, MakeDist, MyUploadCPAN, DistClean, Twitter
 
-svk.tagpattern = //local/coderepos/LWP-UserAgent-ProgressBar/tags/LWP-UserAgent-ProgressBar-%v
+svn.tagpattern = http://svn.coderepos.org/share/lang/perl/LWP-UserAgent-ProgressBar/tags/LWP-UserAgent-ProgressBar-%v
 
 twitter.config = ~/.twitterrc
 twitter.distname = LWP-UserAgent-ProgressBar
