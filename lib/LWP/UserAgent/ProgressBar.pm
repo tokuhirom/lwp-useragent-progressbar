@@ -73,11 +73,11 @@ sub get_with_progress {
 
 __END__
 
-{% USE p = PodGenerated %}
+
 
 =head1 NAME
 
-{% p.package %} - An LWP user agent that can display a progress bar
+LWP::UserAgent::ProgressBar - An LWP user agent that can display a progress bar
 
 =head1 SYNOPSIS
 
@@ -94,7 +94,7 @@ method, descibed below.
 
 =over 4
 
-{% p.write_methods %}
+
 
 =item get_with_progress
 
@@ -104,9 +104,52 @@ bar is displayed.
 
 =back
 
-{% p.write_inheritance %}
+LWP::UserAgent::ProgressBar inherits from L<LWP::UserAgent>.
 
-{% PROCESS standard_pod %}
+The superclass L<LWP::UserAgent> defines these methods and functions:
+
+    new(), _agent(), _need_proxy(), _new_response(),
+    _process_colonic_headers(), _request_sanity_check(), agent(), clone(),
+    conn_cache(), cookie_jar(), credentials(), default_header(),
+    default_headers(), env_proxy(), from(), get(), get_basic_credentials(),
+    head(), is_protocol_supported(), max_redirect(), max_size(), mirror(),
+    no_proxy(), parse_head(), post(), prepare_request(), progress(),
+    protocols_allowed(), protocols_forbidden(), proxy(), redirect_ok(),
+    request(), requests_redirectable(), send_request(), simple_request(),
+    timeout(), use_alarm(), use_eval()
+
+The superclass L<LWP::MemberMixin> defines these methods and functions:
+
+    _elem()
+
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+L<http://rt.cpan.org>.
+
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
+
+=head1 AVAILABILITY
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
+site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+
+=head1 AUTHORS
+
+Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2007-2008 by the authors.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
 
 =cut
 
