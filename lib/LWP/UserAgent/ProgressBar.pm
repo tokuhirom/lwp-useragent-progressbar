@@ -8,7 +8,7 @@ use Term::ProgressBar;
 use base 'LWP::UserAgent';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 sub get_with_progress {
