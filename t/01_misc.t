@@ -5,7 +5,7 @@ use strict;
 use Cwd 'abs_path';
 use File::Spec;
 use LWP::UserAgent::ProgressBar;
-use Test::More tests => 2;
+use Test::More tests => 4;
 use Test::Differences;
 
 my $self_path = $0;
@@ -23,4 +23,12 @@ ok($response->is_success, 'successful download');
 my $content = $response->content;
 
 eq_or_diff $content, $self_content, 'content matches';
+
+$self_url = 'http://search.cpan.org/search';
+$response = LWP::UserAgent::ProgressBar->new->post_with_progress(
+    $self_url, {query => 'LWP'}, bar_name => '# '
+);
+
+ok($response->is_success, 'successful download');
+ok($response->content, 'content is not empty');
 

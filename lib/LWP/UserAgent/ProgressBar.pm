@@ -8,11 +8,20 @@ use Term::ProgressBar;
 use base 'LWP::UserAgent';
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
+sub post_with_progress {
+    my ($self, $url, $form, %args) = @_;
+    $self->_request_with_progress('post', $url, $form, %args);
+}
 
 sub get_with_progress {
     my ($self, $url, %args) = @_;
+    $self->_request_with_progress('get', $url, undef, %args);
+}
+
+sub _request_with_progress {
+    my ($self, $req, $url, $form, %args) = @_;
 
     # don't buffer the prints to make the status update
     local $| = 1;
@@ -37,31 +46,29 @@ sub get_with_progress {
     my $content        = '';
 
     delete $args{$_} for qw(:content_cb :read_size_hint);
+    $args{':content_cb'} =  sub {
+        my ($data, $cb_response, $protocol) = @_;
 
-    my $response = $self->get(
-        $url,
-        %args,
-        ':content_cb' => sub {
-            my ($data, $cb_response, $protocol) = @_;
-
-            unless ($did_set_target) {
-                if (my $content_length = $cb_response->content_length) {
-                    $progress->target($content_length);
-                    $did_set_target = 1;
-                } else {
-                    $progress->target($received_size + 2 * length $data);
-                }
+        unless ($did_set_target) {
+            if (my $content_length = $cb_response->content_length) {
+                $progress->target($content_length);
+                $did_set_target = 1;
+            } else {
+                $progress->target($received_size + 2 * length $data);
             }
+        }
 
-            $received_size += length $data;
-            $content .= $data;
+        $received_size += length $data;
+        $content .= $data;
 
-            $next_update = $progress->update($received_size) if
-                $received_size >= $next_update;
+        $next_update = $progress->update($received_size) if
+            $received_size >= $next_update;
 
-        },
-        ':read_size_hint' => 8192,
-    );
+    };
+    $args{':read_size_hint'} = 8192;
+
+    my $response = $self->$req($url, $req eq 'get' ? (%$form, %args) : ($form, %args));
+
     print "\n";
     $response->content($content);
     $response;
@@ -99,6 +106,12 @@ method, descibed below.
 =item get_with_progress
 
 Takes the same arguments as L<LWP::UserAgent>'s C<get()>, but overrides the
+C<:content_cb> and C<:read_size_hint> arguments. During download, a progress
+bar is displayed.
+
+=item post_with_progress
+
+Takes the same arguments as L<LWP::UserAgent>'s C<post()>, but overrides the
 C<:content_cb> and C<:read_size_hint> arguments. During download, a progress
 bar is displayed.
 
@@ -142,6 +155,7 @@ site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 =head1 AUTHORS
 
 Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+Ktat C<< ktat at cpan.org >>
 
 =head1 COPYRIGHT AND LICENSE
 

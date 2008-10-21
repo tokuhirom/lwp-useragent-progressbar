@@ -1,5 +1,8 @@
 Revision history for Perl extension LWP-UserAgent-ProgressBar
 
+0.04  Thu Oct 21 21:36:48 JST 2008 (Ktat <ktat at cpan.org>)
+     - add post_with_progress method for POST request. 
+
 0.03  Thu Jul 25 15:27:43 CEST 2008 (Marcel Gruenauer <marcel@cpan.org>)
      - Changed dist style and Changes back to standard. People didn't like it -
        the nail that sticks out gets hammered down.
