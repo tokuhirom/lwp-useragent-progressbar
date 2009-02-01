@@ -1,9 +1,6 @@
-steps = FindVersion, ChangeVersion, CheckChangeLog, Manifest, DistTest, Commit, Tag, MakeDist, MyUploadCPAN, DistClean, Twitter
+steps = FindVersion, ChangeVersion, CheckChangeLog, Manifest, DistTestExtra, Commit, Tag, MakeDist, MyUploadCPAN, Twitter, DistClean
 
-svn.tagpattern = http://svn.coderepos.org/share/lang/perl/LWP-UserAgent-ProgressBar/tags/LWP-UserAgent-ProgressBar-%v
-
+git.tagpattern = v%v
+git.push_to    = origin
 twitter.config = ~/.twitterrc
-twitter.distname = LWP-UserAgent-ProgressBar
-twitter.message = shipped %d %v - soon at %u
-
 

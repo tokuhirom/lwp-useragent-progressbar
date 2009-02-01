@@ -103,13 +103,13 @@ method, descibed below.
 
 
 
-=item get_with_progress
+=item C<get_with_progress>
 
 Takes the same arguments as L<LWP::UserAgent>'s C<get()>, but overrides the
 C<:content_cb> and C<:read_size_hint> arguments. During download, a progress
 bar is displayed.
 
-=item post_with_progress
+=item C<post_with_progress>
 
 Takes the same arguments as L<LWP::UserAgent>'s C<post()>, but overrides the
 C<:content_cb> and C<:read_size_hint> arguments. During download, a progress
