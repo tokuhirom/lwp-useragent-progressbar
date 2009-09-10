@@ -2,6 +2,7 @@ package LWP::UserAgent::ProgressBar;
 
 use strict;
 use warnings;
+use 5.006;
 use Term::ProgressBar;
 
 
@@ -159,7 +160,7 @@ Ktat C<< ktat at cpan.org >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2008 by the authors.
+Copyright 2007-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
