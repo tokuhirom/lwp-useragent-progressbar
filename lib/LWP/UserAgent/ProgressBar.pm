@@ -1,14 +1,9 @@
 package LWP::UserAgent::ProgressBar;
-
+use 5.006;
 use strict;
 use warnings;
-use 5.006;
 use Term::ProgressBar;
-
-
 use base 'LWP::UserAgent';
-
-
 our $VERSION = '0.04';
 
 sub post_with_progress {
@@ -26,30 +21,26 @@ sub _request_with_progress {
 
     # don't buffer the prints to make the status update
     local $| = 1;
-
     my $bar_name;
     if (defined $args{bar_name}) {
         $bar_name = $args{bar_name};
         delete $args{bar_name};
     }
-
-    my $progress = Term::ProgressBar->new({
-        count => 1024,
-        (defined $bar_name ? (name => $bar_name) : ()),
-        ETA   => 'linear',
-    });
-   $progress->minor(0);           # turns off the floating asterisks.
-   $progress->max_update_rate(1); # only relevant when ETA is used.
-
+    my $progress = Term::ProgressBar->new(
+        {   count => 1024,
+            (defined $bar_name ? (name => $bar_name) : ()),
+            ETA => 'linear',
+        }
+    );
+    $progress->minor(0);              # turns off the floating asterisks.
+    $progress->max_update_rate(1);    # only relevant when ETA is used.
     my $did_set_target = 0;
     my $received_size  = 0;
     my $next_update    = 0;
     my $content        = '';
-
     delete $args{$_} for qw(:content_cb :read_size_hint);
-    $args{':content_cb'} =  sub {
+    $args{':content_cb'} = sub {
         my ($data, $cb_response, $protocol) = @_;
-
         unless ($did_set_target) {
             if (my $content_length = $cb_response->content_length) {
                 $progress->target($content_length);
@@ -58,27 +49,19 @@ sub _request_with_progress {
                 $progress->target($received_size + 2 * length $data);
             }
         }
-
         $received_size += length $data;
         $content .= $data;
-
-        $next_update = $progress->update($received_size) if
-            $received_size >= $next_update;
-
+        $next_update = $progress->update($received_size)
+          if $received_size >= $next_update;
     };
     $args{':read_size_hint'} = 8192;
-
-    my $response = $self->$req($url, $req eq 'get' ? (%$form, %args) : ($form, %args));
-
+    my $response =
+      $self->$req($url, $req eq 'get' ? (%$form, %args) : ($form, %args));
     print "\n";
     $response->content($content);
     $response;
 }
-
-
 1;
-
-
 __END__
 
 
@@ -151,7 +134,7 @@ See perlmodinstall for information and options on installing Perl modules.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+site near you. Or see L<http://search.cpan.org/dist/LWP-UserAgent-ProgressBar/>.
 
 =head1 AUTHORS
 
