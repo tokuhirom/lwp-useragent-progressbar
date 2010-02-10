@@ -1,27 +1,57 @@
-This is the Perl distribution LWP-UserAgent-ProgressBar.
+# NAME
 
-## Installation
+LWP::UserAgent::ProgressBar - An LWP user agent that can display a progress bar
 
-LWP-UserAgent-ProgressBar installation is straightforward. If your CPAN shell
-is set up, you should just be able to do
+# SYNOPSIS
 
-    % cpan LWP::UserAgent::ProgressBar
+    my $response = LWP::UserAgent::ProgressBar->new->get_with_progress($url);
+    $response->is_success or die "couldn't get $url\n";
+    my $content = $response->content;
 
-Download it, unpack it, then build it as per the usual:
+# DESCRIPTION
 
-    % perl Makefile.PL
-    % make && make test
+This class is a subclass of [LWP::UserAgent](http://search.cpan.org/perldoc?LWP::UserAgent) that provides one additional
+method, descibed below.
 
-Then install it:
+# METHODS
 
-    % make install
+- `get_with_progress`
 
-## Documentation
+Takes the same arguments as [LWP::UserAgent](http://search.cpan.org/perldoc?LWP::UserAgent)'s `get()`, but overrides the
+`:content_cb` and `:read_size_hint` arguments. During download, a progress
+bar is displayed.
 
-LWP-UserAgent-ProgressBar documentation is available as in POD. So you can do:
+- `post_with_progress`
 
-    % perldoc LWP::UserAgent::ProgressBar
+Takes the same arguments as [LWP::UserAgent](http://search.cpan.org/perldoc?LWP::UserAgent)'s `post()`, but overrides the
+`:content_cb` and `:read_size_hint` arguments. During download, a progress
+bar is displayed.
 
-to read the documentation online with your favorite pager.
+# BUGS AND LIMITATIONS
 
-Marcel Gruenauer
+No bugs have been reported.
+
+Please report any bugs or feature requests through the web interface at
+<http://rt.cpan.org>.
+
+# INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
+
+# AVAILABILITY
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
+site near you. Or see <http://search.cpan.org/dist/LWP-UserAgent-ProgressBar/>.
+
+# AUTHORS
+
+Marcel Gr&uuml;nauer, `<marcel@cpan.org>`
+Ktat `ktat at cpan.org`
+
+# COPYRIGHT AND LICENSE
+
+Copyright 2007-2009 by the authors.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

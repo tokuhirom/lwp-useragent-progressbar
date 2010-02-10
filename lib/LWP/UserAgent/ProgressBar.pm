@@ -64,7 +64,7 @@ sub _request_with_progress {
 1;
 __END__
 
-
+=for stopwords Ktat
 
 =head1 NAME
 
@@ -72,6 +72,7 @@ LWP::UserAgent::ProgressBar - An LWP user agent that can display a progress bar
 
 =head1 SYNOPSIS
 
+    my $url = 'http://...';
     my $response = LWP::UserAgent::ProgressBar->new->get_with_progress($url);
     $response->is_success or die "couldn't get $url\n";
     my $content = $response->content;
@@ -79,13 +80,11 @@ LWP::UserAgent::ProgressBar - An LWP user agent that can display a progress bar
 =head1 DESCRIPTION
 
 This class is a subclass of L<LWP::UserAgent> that provides one additional
-method, descibed below.
+method, described below.
 
 =head1 METHODS
 
 =over 4
-
-
 
 =item C<get_with_progress>
 
@@ -100,24 +99,6 @@ C<:content_cb> and C<:read_size_hint> arguments. During download, a progress
 bar is displayed.
 
 =back
-
-LWP::UserAgent::ProgressBar inherits from L<LWP::UserAgent>.
-
-The superclass L<LWP::UserAgent> defines these methods and functions:
-
-    new(), _agent(), _need_proxy(), _new_response(),
-    _process_colonic_headers(), _request_sanity_check(), agent(), clone(),
-    conn_cache(), cookie_jar(), credentials(), default_header(),
-    default_headers(), env_proxy(), from(), get(), get_basic_credentials(),
-    head(), is_protocol_supported(), max_redirect(), max_size(), mirror(),
-    no_proxy(), parse_head(), post(), prepare_request(), progress(),
-    protocols_allowed(), protocols_forbidden(), proxy(), redirect_ok(),
-    request(), requests_redirectable(), send_request(), simple_request(),
-    timeout(), use_alarm(), use_eval()
-
-The superclass L<LWP::MemberMixin> defines these methods and functions:
-
-    _elem()
 
 =head1 BUGS AND LIMITATIONS
 
@@ -147,7 +128,6 @@ Copyright 2007-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
 
 =cut
 

@@ -1,27 +1,49 @@
-This is the Perl distribution LWP-UserAgent-ProgressBar.
+NAME
+    LWP::UserAgent::ProgressBar - An LWP user agent that can display a
+    progress bar
 
-## Installation
+SYNOPSIS
+        my $response = LWP::UserAgent::ProgressBar->new->get_with_progress($url);
+        $response->is_success or die "couldn't get $url\n";
+        my $content = $response->content;
 
-LWP-UserAgent-ProgressBar installation is straightforward. If your CPAN shell
-is set up, you should just be able to do
+DESCRIPTION
+    This class is a subclass of LWP::UserAgent that provides one additional
+    method, descibed below.
 
-    % cpan LWP::UserAgent::ProgressBar
+METHODS
+    "get_with_progress"
+        Takes the same arguments as LWP::UserAgent's "get()", but overrides
+        the ":content_cb" and ":read_size_hint" arguments. During download,
+        a progress bar is displayed.
 
-Download it, unpack it, then build it as per the usual:
+    "post_with_progress"
+        Takes the same arguments as LWP::UserAgent's "post()", but overrides
+        the ":content_cb" and ":read_size_hint" arguments. During download,
+        a progress bar is displayed.
 
-    % perl Makefile.PL
-    % make && make test
+BUGS AND LIMITATIONS
+    No bugs have been reported.
 
-Then install it:
+    Please report any bugs or feature requests through the web interface at
+    <http://rt.cpan.org>.
 
-    % make install
+INSTALLATION
+    See perlmodinstall for information and options on installing Perl
+    modules.
 
-## Documentation
+AVAILABILITY
+    The latest version of this module is available from the Comprehensive
+    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
+    CPAN site near you. Or see
+    <http://search.cpan.org/dist/LWP-UserAgent-ProgressBar/>.
 
-LWP-UserAgent-ProgressBar documentation is available as in POD. So you can do:
+AUTHORS
+    Marcel Grünauer, "<marcel@cpan.org>" Ktat "ktat at cpan.org"
 
-    % perldoc LWP::UserAgent::ProgressBar
+COPYRIGHT AND LICENSE
+    Copyright 2007-2009 by the authors.
 
-to read the documentation online with your favorite pager.
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
-Marcel Gruenauer
