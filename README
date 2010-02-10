@@ -3,13 +3,14 @@ NAME
     progress bar
 
 SYNOPSIS
+        my $url = 'http://...';
         my $response = LWP::UserAgent::ProgressBar->new->get_with_progress($url);
         $response->is_success or die "couldn't get $url\n";
         my $content = $response->content;
 
 DESCRIPTION
     This class is a subclass of LWP::UserAgent that provides one additional
-    method, descibed below.
+    method, described below.
 
 METHODS
     "get_with_progress"
